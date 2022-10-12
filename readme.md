@@ -1,1 +1,0 @@
-This repository contains Packer HCL templates to build docker image without dockerfile
