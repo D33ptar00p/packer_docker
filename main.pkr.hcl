@@ -8,7 +8,7 @@ packer {
 }
 
 source "docker" "mlapp" {
-  image  = "python:3.8-slim"
+  image  = "${var.image}"
   commit = true
   changes = [
       "USER www-data",
@@ -27,8 +27,8 @@ build {
   ]
   post-processors {
   post-processor "docker-tag" {
-      repository = "12345.dkr.ecr.us-east-1.amazonaws.com/packer"
-      tags = ["0.7"]
+      repository = "${var.repository}"
+      tags = ["${var.tags}"]
   }
   post-processor "docker-push" {
       ecr_login = true
